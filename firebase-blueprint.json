@@ -1,0 +1,31 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["client", "trainer", "admin"] },
+        "photoUrl": { "type": "string" },
+        "streak": { "type": "number" },
+        "level": { "type": "number" },
+        "points": { "type": "number" },
+        "xp": { "type": "number" },
+        "targetXp": { "type": "number" },
+        "onboardingCompleted": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    }
+  }
+}

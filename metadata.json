@@ -1,0 +1,6 @@
+{
+  "name": "FitSphere AI",
+  "description": "An AI-powered fitness ecosystem featuring hyper-personalized workouts, interactive muscle maps, real-time diet planning, progress analytics, and a 24/7 AI Coach chatbot.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

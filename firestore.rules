@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global lock
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Auth helpers
+    function isSignedIn() { return request.auth != null; }
+    function existing() { return resource.data; }
+    function incoming() { return request.resource.data; }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['id', 'name', 'email', 'role']) && 
+             data.id is string && data.id.size() <= 128 && data.id == request.auth.uid &&
+             data.name is string && data.name.size() <= 128 &&
+             data.email is string && data.email.size() <= 256 &&
+             data.role in ['client', 'trainer', 'admin'];
+    }
+
+    match /users/{userId} {
+      allow get: if isSignedIn() && request.auth.uid == userId;
+      allow create: if isSignedIn() && request.auth.uid == userId && isValidUser(incoming());
+      allow update: if isSignedIn() && request.auth.uid == userId && isValidUser(incoming());
+    }
+  }
+}
