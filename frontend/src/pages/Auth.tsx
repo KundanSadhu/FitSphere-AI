@@ -20,14 +20,7 @@ export function AuthPage({ onSuccess }: AuthPageProps) {
       setIsLoading(true);
       setError(null);
       const provider = new GoogleAuthProvider();
-      provider.addScope('https://www.googleapis.com/auth/calendar');
-      provider.addScope('https://www.googleapis.com/auth/tasks');
       const result = await signInWithPopup(auth, provider);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      if (credential?.accessToken) {
-        // According to the skill, use in-memory context/variables.
-        (window as any).__google_access_token__ = credential.accessToken;
-      }
       onSuccess();
     } catch (err: any) {
       console.error(err);
