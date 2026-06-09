@@ -375,7 +375,7 @@ export const WORKOUT_PLANS: WorkoutPlan[] = [
             steps: ['Stand mid-foot under bar.', 'Bend and grip bar outside knees.', 'Chest up, back flat.', 'Pull by driving heels into floor.'], precautions: ['Never round lower back.', 'Keep bar close to body.'], tips: ['Push floor away.', 'Engage lats before pulling.']
           },
           {
-            name: 'Lat Pulldown', sets: 4, reps: '10-12', restSeconds: 90, videoUrl: 'https://www.youtube.com/watch?v=SALxVKVe9zo', notes: 'Build back width.', muscleGroup: 'Back',
+            name: 'Lat Pulldown', sets: 4, reps: '10-12', restSeconds: 90, videoUrl: 'https://www.youtube.com/watch?v=5s6KGLTMgoI', notes: 'Build back width.', muscleGroup: 'Back',
             steps: ['Grip bar wide.', 'Sit securely under thigh pads.', 'Pull bar to upper chest.', 'Control the ascent.'], precautions: ['Don\'t pull behind the neck.'], tips: ['Lead with elbows.', 'Arch back slightly.']
           },
           {
@@ -396,7 +396,7 @@ export const WORKOUT_PLANS: WorkoutPlan[] = [
             steps: ['Rest bar on traps.', 'Stand shoulder width.', 'Squat below parallel.', 'Drive up through heels.'], precautions: ['Don\'t let knees cave in.', 'Keep chest up.'], tips: ['Take deep breath and brace core before descending.']
           },
           {
-            name: 'Leg Press', sets: 4, reps: '10-12', restSeconds: 120, videoUrl: 'https://www.youtube.com/watch?v=IZxyjW7OSvc', notes: 'Heavy quad loading safely.', muscleGroup: 'Legs',
+            name: 'Leg Press', sets: 4, reps: '10-12', restSeconds: 120, videoUrl: 'https://www.youtube.com/watch?v=EotSw18oR9w', notes: 'Heavy quad loading safely.', muscleGroup: 'Legs',
             steps: ['Sit in machine, place feet on platform.', 'Lower weight until knees are 90 degrees.', 'Press up.'], precautions: ['Never fully lock out your knees.', 'Don\'t let lower back round off pad.'], tips: ['Place feet lower for quad focus, higher for glutes/hams.']
           },
           {
@@ -421,11 +421,11 @@ export const WORKOUT_PLANS: WorkoutPlan[] = [
             steps: ['Hold dumbbells at sides.', 'Raise arms straight out until parallel.', 'Lower slowly.'], precautions: ['Don\'t swing.'], tips: ['Lead with elbows, like pouring water from a pitcher.']
           },
           {
-            name: 'Front Dumbbell Raise', sets: 3, reps: '12', restSeconds: 60, videoUrl: 'https://www.youtube.com/watch?v=sOcYlNIpHZ4', notes: 'Front delt focus.', muscleGroup: 'Shoulders',
+            name: 'Front Dumbbell Raise', sets: 3, reps: '12', restSeconds: 60, videoUrl: 'https://www.youtube.com/watch?v=h9xfpTrAvkE', notes: 'Front delt focus.', muscleGroup: 'Shoulders',
             steps: ['Hold dumbbells in front of thighs.', 'Raise straight out front to shoulder height.', 'Lower strictly.'], precautions: ['Avoid rocking back and forth.'], tips: ['Alternate arms to maintain focus.']
           },
           {
-            name: 'Reverse Pec Deck', sets: 3, reps: '15', restSeconds: 60, videoUrl: 'https://www.youtube.com/watch?v=_sAIA062B_M', notes: 'Rear delt isolation.', muscleGroup: 'Shoulders',
+            name: 'Reverse Pec Deck', sets: 3, reps: '15', restSeconds: 60, videoUrl: 'https://www.youtube.com/watch?v=-TKqxK7-ehc', notes: 'Rear delt isolation.', muscleGroup: 'Shoulders',
             steps: ['Sit facing the pad.', 'Grip handles.', 'Pull arms straight back.', 'Squeeze rear delts.'], precautions: ['Keep chest pressed against pad.'], tips: ['Focus purely on the back of the shoulder.']
           }
         ]
@@ -459,11 +459,11 @@ export const WORKOUT_PLANS: WorkoutPlan[] = [
             steps: ['Hang from bar.', 'Raise legs strictly to 90 degrees.', 'Lower under control.'], precautions: ['Don\'t swing body.'], tips: ['Tilt pelvis upward to engage abs fully.']
           },
           {
-            name: 'Cable Crunches', sets: 4, reps: '15-20', restSeconds: 60, videoUrl: 'https://www.youtube.com/watch?v=WME1s0hB9mE', notes: 'Weighted ab flexion.', muscleGroup: 'Core',
+            name: 'Cable Crunches', sets: 4, reps: '15-20', restSeconds: 60, videoUrl: 'https://www.youtube.com/watch?v=ByZJuk85YuE', notes: 'Weighted ab flexion.', muscleGroup: 'Core',
             steps: ['Kneel facing cable machine.', 'Hold rope behind neck.', 'Crunch downwards, bringing elbows to knees.', 'Return slowly.'], precautions: ['Don\'t pull with arms, crunch with abs.'], tips: ['Round back slightly during contraction to hit abs.']
           },
           {
-            name: 'Ab Wheel Rollout', sets: 3, reps: '10', restSeconds: 90, videoUrl: 'https://www.youtube.com/watch?v=rqiTWTEIGAQ', notes: 'Anti-extension core strength.', muscleGroup: 'Core',
+            name: 'Ab Wheel Rollout', sets: 3, reps: '10', restSeconds: 90, videoUrl: 'https://www.youtube.com/watch?v=QLX6xMHfgK8', notes: 'Anti-extension core strength.', muscleGroup: 'Core',
             steps: ['Kneel down, grip ab wheel.', 'Roll forward as far as possible keeping rigid torso.', 'Pull back to start using core.'], precautions: ['Don\'t let lower back sag at the bottom.'], tips: ['Squeeze glutes throughout the movement.']
           }
         ]
