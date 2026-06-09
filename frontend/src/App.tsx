@@ -119,8 +119,17 @@ export default function App() {
           
           if (docSnap.exists()) {
             const firestoreUser = docSnap.data() as User;
-            setUser(firestoreUser);
-            localStorage.setItem('fitsphere_user_profile', JSON.stringify(firestoreUser));
+            const mergedUser = {
+              ...firestoreUser,
+              name: authUser.displayName || firestoreUser.name,
+              email: authUser.email || firestoreUser.email,
+              photoUrl: authUser.photoURL || firestoreUser.photoUrl,
+            };
+            setUser(mergedUser);
+            setDoc(userRef, mergedUser, { merge: true }).catch(err => {
+              console.error("Failed updating Firestore profile:", err);
+            });
+            localStorage.setItem('fitsphere_user_profile', JSON.stringify(mergedUser));
             if (firestoreUser.appState) {
               if (firestoreUser.appState.weightHistory) setWeightHistory(firestoreUser.appState.weightHistory);
               if (firestoreUser.appState.progressPhotos) setProgressPhotos(firestoreUser.appState.progressPhotos);

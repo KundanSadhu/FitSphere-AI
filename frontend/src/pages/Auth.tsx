@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { Bot, Mail, Lock, User as UserIcon } from 'lucide-react';
 import { auth } from '../lib/firebase';
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 interface AuthPageProps {
   onSuccess: () => void;
@@ -42,7 +42,10 @@ export function AuthPage({ onSuccess }: AuthPageProps) {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, password);
       } else {
-        await createUserWithEmailAndPassword(auth, email, password);
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        if (name.trim()) {
+          await updateProfile(cred.user, { displayName: name.trim() });
+        }
       }
       onSuccess();
     } catch (err: any) {
