@@ -3,7 +3,7 @@ import { ChatMessage as ChatMessageType } from '../types';
 import { ChatMessage } from './ChatMessage';
 import { ChatInput } from './ChatInput';
 import { MarkdownRenderer } from './MarkdownRenderer';
-import { Sparkles, Bot, AlertCircle } from 'lucide-react';
+import { Sparkles, Bot, AlertCircle, Trash2 } from 'lucide-react';
 
 interface ChatInterfaceProps {
   initialMessages?: ChatMessageType[];
@@ -116,6 +116,16 @@ export const ChatInterface = ({ initialMessages = [] }: ChatInterfaceProps) => {
     }
   };
 
+  const handleClearChat = () => {
+    setMessages([]);
+    setStreamingText('');
+    setErrorText(null);
+  };
+
+  const handleRetry = () => {
+    setErrorText(null);
+  };
+
   const SUGGESTED_QS = [
     'Recommend a 3-day intermediate split schedule',
     'Perfect posture check guides for incline presses',
@@ -130,12 +140,21 @@ export const ChatInterface = ({ initialMessages = [] }: ChatInterfaceProps) => {
         <div className="w-11 h-11 rounded-2xl bg-[#B9FF66] border-2 border-[#191A23] shadow-[2px_2px_0px_#191A23] text-[#191A23] flex items-center justify-center shrink-0">
           <Bot className="w-6 h-6 stroke-[2.5]" />
         </div>
-        <div>
+        <div className="flex-1">
           <h2 className="font-black text-[#191A23] tracking-tight text-base leading-tight">Coach Sphere</h2>
           <p className="text-[10px] font-black text-slate-500 font-mono tracking-wider uppercase flex items-center gap-1.5 mt-0.5">
             <span className="w-2.5 h-2.5 rounded-full bg-[#B9FF66] border border-[#191A23]" /> 24/7 BIOMECHANICAL ASSISTANT
           </p>
         </div>
+        {messages.length > 0 && (
+          <button
+            onClick={handleClearChat}
+            title="Clear conversation"
+            className="w-9 h-9 rounded-xl bg-white border-2 border-[#191A23] text-slate-500 hover:text-rose-600 hover:border-rose-400 flex items-center justify-center transition-all shadow-[2px_2px_0px_#191A23] active:translate-y-0.5 active:shadow-none cursor-pointer shrink-0"
+          >
+            <Trash2 className="w-4 h-4 stroke-[2.5]" />
+          </button>
+        )}
       </div>
 
       {/* Messages Scroll Area */}
@@ -187,9 +206,17 @@ export const ChatInterface = ({ initialMessages = [] }: ChatInterfaceProps) => {
 
         {/* API Error indicator */}
         {errorText && (
-          <div className="flex items-center gap-2.5 p-3.5 rounded-2xl bg-rose-50 border-2 border-[#191A23] text-rose-700 text-xs font-black shadow-[2px_2px_0px_#191A23]">
-            <AlertCircle className="w-5 h-5 text-rose-600" />
-            <span>AI Interface error: {errorText}</span>
+          <div className="flex items-center justify-between gap-2.5 p-3.5 rounded-2xl bg-rose-50 border-2 border-[#191A23] text-rose-700 text-xs font-black shadow-[2px_2px_0px_#191A23]">
+            <div className="flex items-center gap-2.5">
+              <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+              <span>AI Interface error: {errorText}</span>
+            </div>
+            <button
+              onClick={handleRetry}
+              className="px-3 py-1.5 bg-white border border-rose-300 rounded-lg text-rose-600 hover:bg-rose-100 text-[10px] font-black transition-all cursor-pointer shrink-0"
+            >
+              Retry
+            </button>
           </div>
         )}
 
