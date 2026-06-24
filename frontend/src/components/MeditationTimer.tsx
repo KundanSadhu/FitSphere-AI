@@ -56,9 +56,15 @@ export const MeditationTimer = () => {
             localStorage.setItem('fitsphere_sessions_done', nextDone.toString());
             setShowCompletionOverlay(true);
             
-            // Log reward points to main experience
-            const prevPts = parseInt(localStorage.getItem('fitsphere_points') || '200', 10);
-            localStorage.setItem('fitsphere_points', (prevPts + 150).toString());
+            // Sync reward points to user profile
+            try {
+              const profile = JSON.parse(localStorage.getItem('fitsphere_user_profile') || '{}');
+              if (profile.xp !== undefined) {
+                profile.xp = (profile.xp || 0) + 150;
+                profile.points = (profile.points || 0) + 50;
+                localStorage.setItem('fitsphere_user_profile', JSON.stringify(profile));
+              }
+            } catch (e) {}
             
             // Play a celebratory singing bowl strike!
             const actx = window.AudioContext || (window as any).webkitAudioContext;
@@ -345,7 +351,7 @@ export const MeditationTimer = () => {
             </div>
 
             <div className="border-t-2 border-[#191A23]/10 pt-4">
-              <span className="text-[10px] font-black text-slate-505 tracking-wider uppercase block mb-2 font-mono">
+              <span className="text-[10px] font-black text-slate-500 tracking-wider uppercase block mb-2 font-mono">
                 Select target timer interval
               </span>
               <div className="grid grid-cols-3 gap-2">

@@ -146,7 +146,7 @@ export const ChatInterface = ({ initialMessages = [] }: ChatInterfaceProps) => {
               <Bot className="w-7 h-7 stroke-[2.5]" />
             </div>
             <h3 className="font-black text-[#191A23] tracking-tight text-base">Optimize Your Workouts</h3>
-            <p className="text-xs text-slate-550 max-w-sm mt-1 mb-6 font-semibold leading-relaxed">
+            <p className="text-xs text-slate-500 max-w-sm mt-1 mb-6 font-semibold leading-relaxed">
               Ask about target split movements, physical form guidelines, nutrition metrics, or workout scheduling.
             </p>
             

@@ -3,8 +3,7 @@ import { Plus } from 'lucide-react';
 import { motion } from 'motion/react';
 import { WeightRecord, User } from '../types';
 import { WeightChart } from '../components/WeightChart';
-import { storage } from '../lib/firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 
 interface ProgressMatrixProps {
   user: User;
@@ -43,10 +42,7 @@ export function ProgressMatrix({
 
     try {
       setIsUploading(true);
-      const storageRef = ref(storage, `progress_photos/${user.id}_${Date.now()}`);
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
-      
+      const url = URL.createObjectURL(file);
       const nextPhotos = [...progressPhotos, url];
       setProgressPhotos(nextPhotos);
       saveUserAndSync(user, { progressPhotos: nextPhotos });

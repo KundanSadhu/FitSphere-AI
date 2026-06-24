@@ -377,7 +377,7 @@ const STYLED_REGIMES = [
         time: '04:30 PM',
         image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=600&auto=format&fit=crop',
         swapOptions: [
-          { name: 'Banana Greek Yogurt & Creamy PB', calories: 290, protein: 20, carbs: 36, fat: 83 },
+          { name: 'Banana Greek Yogurt & Creamy PB', calories: 290, protein: 20, carbs: 36, fat: 8 },
           { name: 'Chocolate Whey Shake & Raw Walnuts', calories: 310, protein: 30, carbs: 12, fat: 14 },
           { name: 'Organic Rice Cakes with Sliced Banana', calories: 240, protein: 12, carbs: 44, fat: 4 }
         ],
@@ -1127,7 +1127,7 @@ export function Nutrition() {
                 </div>
 
                 <div className="text-left sm:text-right shrink-0">
-                  <span className="text-[10px] sm:text-[11px] font-mono text-slate-350 uppercase block tracking-wider font-extrabold">Estimated Calories</span>
+                  <span className="text-[10px] sm:text-[11px] font-mono text-slate-300 uppercase block tracking-wider font-extrabold">Estimated Calories</span>
                   <span className="text-2xl sm:text-4xl md:text-5xl font-mono font-black text-white drop-shadow-md">
                     {activeMeal.foods.reduce((sum, f) => sum + f.calories, 0)} <span className="text-xs sm:text-lg font-sans font-black text-[#B9FF66]">kcal</span>
                   </span>
@@ -1217,7 +1217,7 @@ export function Nutrition() {
                           className={`px-3 py-1.5 rounded-lg text-[9px] font-extrabold border transition-all text-left shrink-0 cursor-pointer ${
                             isSelected
                               ? 'bg-indigo-600 text-white border-indigo-600 shadow-soft-sm'
-                              : 'bg-white text-slate-600 border-slate-205 hover:bg-slate-50'
+                              : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
                           }`}
                         >
                           {sIdx === 0 ? 'Standard Setup' : `Alt #${sIdx}`}
@@ -1242,13 +1242,13 @@ export function Nutrition() {
           {/* Connected Supplements panel with rich UX & perfect image fallback options */}
           <div className="bg-white border border-slate-100 rounded-3xl p-5 shadow-soft-sm space-y-4 text-left">
             <div className="flex justify-between items-center bg-slate-50 p-2 rounded-xl border border-slate-100/60">
-              <span className="text-[8px] font-mono font-black text-indigo-600 bg-indigo-50 border border-indigo-150 px-2 py-0.5 rounded uppercase tracking-wider block w-fit">
+              <span className="text-[8px] font-mono font-black text-indigo-600 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded uppercase tracking-wider block w-fit">
                 Meal Enhancer
               </span>
               <span className="text-[9px] font-mono text-slate-400 font-bold">Active Meal: <strong className="text-indigo-600 capitalize font-mono">{activeMeal.type}</strong></span>
             </div>
             
-            <p className="text-xs text-slate-450 font-semibold leading-relaxed">
+            <p className="text-xs text-slate-400 font-semibold leading-relaxed">
               Add wholesone supplements or nutritious snacks directly to your current meal. Your daily nutrient totals and circular rings will recalculate instantly!
             </p>
 
@@ -1352,7 +1352,7 @@ export function Nutrition() {
               );
             })()}
 
-            <div className="rounded-xl bg-orange-50/75 border border-orange-100 p-3 text-[9.5px] leading-relaxed font-bold text-orange-850">
+            <div className="rounded-xl bg-orange-50/75 border border-orange-100 p-3 text-[9.5px] leading-relaxed font-bold text-orange-800">
               ⚡ <b>Hydration Tip:</b> Remember to drink at least 250ml of fresh water from the water tracker below when adding concentrated supplements to keep your digestion and metabolism running optimally!
             </div>
           </div>
@@ -1385,7 +1385,7 @@ export function Nutrition() {
                     setGlasses(p => Math.min(8, p + 1));
                     triggerAlert('Hydrated +250ml pure water! Maintaining blood pressure alignment.');
                   }}
-                  className="w-7 h-7 rounded-lg bg-sky-500 hover:bg-sky-655 text-white text-xs font-black flex items-center justify-center cursor-pointer font-mono shadow-sm"
+                  className="w-7 h-7 rounded-lg bg-sky-500 hover:bg-sky-600 text-white text-xs font-black flex items-center justify-center cursor-pointer font-mono shadow-sm"
                 >
                   +
                 </button>

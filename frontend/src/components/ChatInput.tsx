@@ -48,7 +48,7 @@ export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
           onKeyDown={handleKeyDown}
           placeholder="Ask Coach Sphere about workout splits, posture, calories, or diet advice..."
           rows={1}
-          className="flex-1 px-3 py-2 resize-none outline-none text-xs sm:text-sm text-[#191A23] placeholder:text-slate-450 bg-transparent max-h-[120px] font-black leading-relaxed"
+          className="flex-1 px-3 py-2 resize-none outline-none text-xs sm:text-sm text-[#191A23] placeholder:text-slate-400 bg-transparent max-h-[120px] font-black leading-relaxed"
         />
         
         <button

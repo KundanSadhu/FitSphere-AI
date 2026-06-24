@@ -27,7 +27,7 @@ export function parseInline(text: string): React.ReactNode[] {
       }
     }
     if (italicIdx !== -1) {
-      if (boldIdx !== earliest && (earliest === -1 || italicIdx < earliest)) {
+      if ((boldIdx === -1 || boldIdx !== earliest) && (earliest === -1 || italicIdx < earliest)) {
         earliest = italicIdx;
         type = 'italic';
       }

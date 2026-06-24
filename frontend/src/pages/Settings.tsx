@@ -1,8 +1,7 @@
 import { User } from '../types';
 import { Settings as SettingsIcon, Bell, User as UserIcon, RefreshCw, Scale, Heart, AlertCircle, Camera } from 'lucide-react';
 import { useState, ChangeEvent } from 'react';
-import { storage } from '../lib/firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 
 interface SettingsProps {
   user: User;
@@ -56,10 +55,7 @@ export function Settings({
 
     try {
       setIsUploadingPhoto(true);
-      const storageRef = ref(storage, `profiles/${user.id}_${Date.now()}`);
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
-      
+      const url = URL.createObjectURL(file);
       saveUserAndSync({
         ...user,
         photoUrl: url

@@ -1,19 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { meditationAudio } from '../utils/audioSynth';
-import { Volume2, CloudRain, Bell, Music, HelpCircle, AudioLines } from 'lucide-react';
+import { Volume2, CloudRain, Music, HelpCircle, AudioLines } from 'lucide-react';
 
 export const MeditationSoundKit = () => {
   const [ambientActive, setAmbientActive] = useState(false);
   const [rainActive, setRainActive] = useState(false);
-  const [selectedFreq, setSelectedFreq] = useState<number>(136.1); // Earth frequency 'Om'
+  const [selectedFreq, setSelectedFreq] = useState<number>(136.1);
   const [droneVol, setDroneVol] = useState<number>(0.35);
   const [bowlStrikeCount, setBowlStrikeCount] = useState(0);
   const [waveScale, setWaveScale] = useState(1);
+  const rainRef = useRef<(() => void) | null>(null);
+  const togglingRain = useRef(false);
 
-  // Stop sounds on unmount to prevent lingering oscillators
   useEffect(() => {
     return () => {
       meditationAudio.stopAmbientDrone();
+      rainRef.current?.();
     };
   }, []);
 
@@ -28,15 +30,18 @@ export const MeditationSoundKit = () => {
   };
 
   const handleToggleRain = () => {
+    if (togglingRain.current) return;
+    togglingRain.current = true;
     if (rainActive) {
-      // Pink rain noise simulator returns a stop function we can call
-      (window as any).stopRainFn?.();
+      rainRef.current?.();
+      rainRef.current = null;
       setRainActive(false);
     } else {
       const stopFn = meditationAudio.startZenRain(0.08);
-      (window as any).stopRainFn = stopFn;
+      rainRef.current = stopFn;
       setRainActive(true);
     }
+    setTimeout(() => { togglingRain.current = false; }, 300);
   };
 
   const handleBowlStrike = (freq: number) => {

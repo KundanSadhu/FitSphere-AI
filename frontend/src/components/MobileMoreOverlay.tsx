@@ -27,7 +27,7 @@ export function MobileMoreOverlay({ isOpen, onClose, activeTab, setActiveTab, on
     >
       <div 
         id="mobile-more-overlay-content" 
-        className="bg-white w-full max-w-md rounded-t-3xl p-6 space-y-4 border-t border-slate-205 shadow-2xl relative block animate-slide-up"
+        className="bg-white w-full max-w-md rounded-t-3xl p-6 space-y-4 border-t border-slate-200 shadow-2xl relative block animate-slide-up"
       >
         {/* Header bar */}
         <div className="flex items-center justify-between pb-2 border-b border-slate-100">
@@ -56,7 +56,7 @@ export function MobileMoreOverlay({ isOpen, onClose, activeTab, setActiveTab, on
                 className={`flex items-center gap-2.5 p-3 rounded-2xl border text-xs font-bold transition-all text-left ${
                   isActive 
                     ? 'bg-indigo-600 border-indigo-600 text-white shadow' 
-                    : 'bg-white border-slate-150 text-slate-700 hover:bg-slate-50'
+                    : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
                 }`}
               >
                 <item.icon className={`w-4.5 h-4.5 shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
@@ -74,7 +74,7 @@ export function MobileMoreOverlay({ isOpen, onClose, activeTab, setActiveTab, on
               onClose();
             }}
             id="mobile-more-logout-btn"
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-750 text-xs font-black transition-colors cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-700 text-xs font-black transition-colors cursor-pointer"
           >
             <LogOut className="w-4.5 h-4.5" />
             <span>Log Out Account</span>

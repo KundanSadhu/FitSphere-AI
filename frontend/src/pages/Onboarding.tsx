@@ -48,7 +48,7 @@ export function Onboarding({
               {onboardingStep === 4 && 'Health Conditions Check'}
             </h3>
           </div>
-          <span className="text-xs font-bold text-slate-450">{onboardingStep * 25}%</span>
+          <span className="text-xs font-bold text-slate-400">{onboardingStep * 25}%</span>
         </div>
 
         <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden relative">

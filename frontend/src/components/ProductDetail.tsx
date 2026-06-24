@@ -121,7 +121,7 @@ export function ProductDetail({ product, onClose, onAddToCart }: ProductDetailPr
                 </div>
                 <div className="p-2 border border-[#191A23]/10 bg-slate-50 rounded-xl flex flex-col justify-center items-center">
                   <Check className="w-4 h-4 text-emerald-500 mb-1" />
-                  <span className="text-[8px] font-black text-slate-500 uppercase tracking-wider font-mono font-sans">{product.inStock ? 'In Stock' : 'Ordered'}</span>
+                  <span className="text-[8px] font-black text-slate-500 uppercase tracking-wider font-mono">{product.inStock ? 'In Stock' : 'Ordered'}</span>
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@ export function ProductDetail({ product, onClose, onAddToCart }: ProductDetailPr
                         key={i}
                         className={`w-4.5 h-4.5 ${
                           i < Math.floor(product.rating)
-                            ? 'text-amber-400 fill-amber-450'
+                            ? 'text-amber-400 fill-amber-400'
                             : 'text-slate-300'
                         }`}
                       />
@@ -194,19 +194,19 @@ export function ProductDetail({ product, onClose, onAddToCart }: ProductDetailPr
               {/* Spec Items Matrix */}
               <div className="grid grid-cols-2 gap-3 text-xs border-t border-[#191A23]/10 pt-4">
                 <div className="flex justify-between items-center py-1 border-b border-[#191A23]/5">
-                  <span className="text-slate-450 font-bold">Category</span>
+                  <span className="text-slate-400 font-bold">Category</span>
                   <span className="font-extrabold text-[#191A23] font-mono">{product.category}</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-[#191A23]/5">
-                  <span className="text-slate-450 font-bold">Standard Size</span>
+                  <span className="text-slate-400 font-bold">Standard Size</span>
                   <span className="font-extrabold text-[#191A23] font-mono">30oz / 1 Pack</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-[#191A23]/5">
-                  <span className="text-slate-450 font-bold">Authenticity</span>
+                  <span className="text-slate-400 font-bold">Authenticity</span>
                   <span className="font-extrabold text-emerald-600 font-mono">Verified Hub</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-[#191A23]/5">
-                  <span className="text-slate-450 font-bold">Shipping Speed</span>
+                  <span className="text-slate-400 font-bold">Shipping Speed</span>
                   <span className="font-extrabold text-[#191A23] font-mono">{product.isPrime ? 'Next Day' : '3-4 Days'}</span>
                 </div>
               </div>
