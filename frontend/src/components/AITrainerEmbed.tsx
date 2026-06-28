@@ -139,16 +139,19 @@ export function AITrainerEmbed() {
     const video = videoRef.current;
     const landmarker = landmarkerRef.current;
     if (!video || !landmarker || video.readyState < 2) {
+      console.log('[AITrainer] predictLoop skipped: readyState=', video?.readyState, 'landmarker=', !!landmarker);
       animRef.current = requestAnimationFrame(predictLoop);
       return;
     }
 
-    const results = landmarker.detectForVideo(video, performance.now());
+    const ts = performance.now();
+    const results = landmarker.detectForVideo(video, ts);
     if (results.poseLandmarks && results.poseLandmarks.length > 0) {
       const landmarks = results.poseLandmarks[0];
       drawSkeleton(landmarks);
       detectExercise(landmarks);
     } else {
+      console.log('[AITrainer] No pose landmarks at ts', Math.round(ts), '- cameraOn:', cameraOn, 'videoReady:', video.readyState);
       const canvas = canvasRef.current;
       if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -164,16 +167,25 @@ export function AITrainerEmbed() {
   const startCamera = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480, facingMode: 'user' } });
+      console.log('[AITrainer] Camera stream obtained');
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        videoRef.current.onloadeddata = () => {
-          videoRef.current!.play();
-          setCameraOn(true);
-          setStatus('Ready');
-          animRef.current = requestAnimationFrame(predictLoop);
+        videoRef.current.onloadeddata = async () => {
+          console.log('[AITrainer] Video onloadeddata fired, readyState:', videoRef.current?.readyState);
+          try {
+            await videoRef.current!.play();
+            console.log('[AITrainer] video.play() completed, readyState:', videoRef.current?.readyState);
+            setCameraOn(true);
+            setStatus('Ready');
+            animRef.current = requestAnimationFrame(predictLoop);
+          } catch (err) {
+            console.error('[AITrainer] Video play() failed:', err);
+            setStatus('Video play failed');
+          }
         };
       }
-    } catch {
+    } catch (err) {
+      console.error('[AITrainer] Camera access denied:', err);
       setCameraOn(false);
       setStatus('Camera access denied');
       setFeedback('Allow camera access in your browser settings');
@@ -199,8 +211,10 @@ export function AITrainerEmbed() {
           minTrackingConfidence: 0.7,
         });
         landmarkerRef.current = landmarker;
+        console.log('[AITrainer] PoseLandmarker model loaded successfully');
         startCamera();
-      } catch {
+      } catch (e) {
+        console.error('[AITrainer] Model failed to load:', e);
         setStatus('Model failed to load');
         setFeedback('Try refreshing the page');
       }
