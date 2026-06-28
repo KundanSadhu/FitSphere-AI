@@ -145,9 +145,16 @@ export function AITrainerEmbed() {
     }
 
     const ts = performance.now();
-    const results = landmarker.detectForVideo(video, ts);
-    if (results.poseLandmarks && results.poseLandmarks.length > 0) {
-      const landmarks = results.poseLandmarks[0];
+    let results;
+    try {
+      results = landmarker.detectForVideo(video, ts);
+    } catch (err) {
+      console.error('[AITrainer] detectForVideo error:', err);
+      animRef.current = requestAnimationFrame(predictLoop);
+      return;
+    }
+    if (results.landmarks && results.landmarks.length > 0) {
+      const landmarks = results.landmarks[0];
       drawSkeleton(landmarks);
       detectExercise(landmarks);
     } else {
